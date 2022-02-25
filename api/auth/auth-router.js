@@ -3,7 +3,6 @@ const bscrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const Users = require('../users/users-model')
 const mWare = require('../middleware/mWare')
-const restricted = require('../middleware/restricted')
 const config = require('../../config')
 
 
