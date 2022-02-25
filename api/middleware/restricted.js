@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken')
-const config = require('../../config')
-
+const JWT_SECRET = process.env.JWT_SECRET || 'secret123'
 module.exports = (req, res, next) => {
   
   /*
@@ -16,7 +15,7 @@ module.exports = (req, res, next) => {
   */
   const token = req.headers.authorization
   if(!token) return res.status(401).json({message: "token required"})
-  jwt.verify(token, config.JWT_SECRET, (err) => {
+  jwt.verify(token, JWT_SECRET, (err) => {
     if(err) return res.status(401).json({message: "token invalid"})
     else next()
   })

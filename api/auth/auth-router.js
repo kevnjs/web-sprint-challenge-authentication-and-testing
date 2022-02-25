@@ -3,15 +3,14 @@ const bscrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const Users = require('../users/users-model')
 const mWare = require('../middleware/mWare')
-const config = require('../../config')
-
+const JWT_SECRET = process.env.JWT_SECRET || 'secret123'
 
 const generateToken = (user) => {
   const payload = {
     subject: user.id,
     username: user.username,
   }
-  return jwt.sign(payload, config.JWT_SECRET, { expiresIn: '1d'})
+  return jwt.sign(payload, JWT_SECRET, { expiresIn: '1d'})
 }
 
 router.post('/register', mWare.registerCheck, async (req, res) => {

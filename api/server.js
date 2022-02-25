@@ -8,7 +8,6 @@ const server = express();
 const Users = require('../api/users/users-model')
 
 
-
 server.use(helmet());
 server.use(cors());
 server.use(express.json());
