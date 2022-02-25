@@ -6,6 +6,7 @@ const authRouter = require('./auth/auth-router.js');
 const jokesRouter = require('./jokes/jokes-router.js');
 const server = express();
 const Users = require('../api/users/users-model')
+require('dotenv').config()
 
 
 server.use(helmet());

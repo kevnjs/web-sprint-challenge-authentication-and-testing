@@ -46,6 +46,7 @@ describe('Can GET users', () => {
   test('Users database get', async () => {
     const result = await db('users')
     expect(result).toEqual([])
+    
     const  [ newUser ] = await db('users').insert({username: 'kev', password: 'pass'})
     const newResult = await db('users')
     expect(newResult).toEqual([{id: newUser, username: 'kev', password: 'pass'}])
