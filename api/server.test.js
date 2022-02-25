@@ -42,10 +42,13 @@ describe('New user is registered', () => {
   })
 })
 
-describe('Jokes GET with token', () => {
-  test('Login with tokens and receive jokes', async () => {
-    const result = await request(server).post('/api/auth/login', {username: 'kevin', password: '1234'})
-    expect(result).toBe('kev')
+describe('Can GET users', () => {
+  test('Users database get', async () => {
+    const result = await db('users')
+    expect(result).toEqual([])
+    const  [ newUser ] = await db('users').insert({username: 'kev', password: 'pass'})
+    const newResult = await db('users')
+    expect(newResult).toEqual([{id: newUser, username: 'kev', password: 'pass'}])
   })
 })
 
